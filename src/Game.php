@@ -26,6 +26,9 @@ class Game
 			if ($this->isStrike($rollIndex)) {
 				$score += $this->strikeBonus($rollIndex);
 				$rollIndex++;
+			} else if ($this->isSpare($rollIndex)) {
+				$score += $this->spareBonus($rollIndex);
+				$rollIndex += 2;
 			} else {
 				$score += $this->sumOfBallsInFrame($rollIndex);
 				$rollIndex += 2;
@@ -60,5 +63,25 @@ class Game
 	private function strikeBonus($rollIndex)
 	{
 		return 10 + $this->rolls[$rollIndex + 1] + $this->rolls[$rollIndex + 2];
+	}
+	
+	/**
+	 * @param int $rollIndex
+	 */
+	private function isSpare($rollIndex)
+	{
+		return $this->rolls[$rollIndex] + $this->rolls[$rollIndex + 1] == 10;
+	}
+
+	/**
+	 * A spare frame is scored by adding ten,
+	 * plus the number of pins knocked down by the next ball, 
+	 * to the score of the previous frame.
+	 * 
+	 * @param int $rollIndex
+	 */
+	private function spareBonus($rollIndex)
+	{
+		return 10 + $this->rolls[$rollIndex + 2];
 	}
 }

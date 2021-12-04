@@ -57,8 +57,7 @@ class BowlingGameTest extends TestCase
 		$this->game->roll(10);
 		$this->game->roll(10);
 		
-		// TODO: need to count the score, so just added a random number
-		$this->assertEquals(99999, $this->game->score());
+		$this->assertEquals(170, $this->game->score());
 	}
 
 	public function testFiveFramesAreStrikesAndOtherFramesAreMisses()
@@ -71,8 +70,7 @@ class BowlingGameTest extends TestCase
 			$this->game->roll(0);
 		}
 
-		// TODO: need to count the score, so just added a random number
-		$this->assertEquals(99999, $this->game->score());
+		$this->assertEquals(120, $this->game->score());
 	}
 
 	public function testFiveFramesAreMissesAndOtherFramesAreStrikes()
@@ -85,8 +83,7 @@ class BowlingGameTest extends TestCase
 			$this->game->roll(10);
 		}
 
-		// TODO: need to count the score, so just added a random number
-		$this->assertEquals(99999, $this->game->score());
+		$this->assertEquals(150, $this->game->score());
 	}
 
 	public function testAllMissesButOneFrameIsStrike()
@@ -106,6 +103,7 @@ class BowlingGameTest extends TestCase
 
 	public function testEverySecondFrameIsStrike()
 	{
+		// Knocked pins in frame: 00 x 00 x 00 x 00 x 00 xxx
 		foreach (range(1, 15) as $roll) {
 			if ($roll % 3 == 0) {
 				$this->game->roll(10);
@@ -117,9 +115,7 @@ class BowlingGameTest extends TestCase
 		$this->game->roll(10);
 		$this->game->roll(10);
 
-		// TODO: need to count the score, so just added a random number
-		// 00 x 00 x 00 x 00 x 00 xxx
-		$this->assertEquals(9999, $this->game->score());
+		$this->assertEquals(70, $this->game->score());
 	}
 
 	public function testAllSpareButLastFrameIsSparePlusFivePins()
@@ -128,7 +124,6 @@ class BowlingGameTest extends TestCase
 			$this->game->roll(5);
 		}
 
-		// TODO: need to count the score, so just added a random number
 		$this->assertEquals(150, $this->game->score());
 	}
 }
