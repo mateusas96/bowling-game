@@ -34,7 +34,7 @@ class BowlingGameTest extends TestCase
 	}
 
 	// test single pin is hit in each frame
-	public function testAllOnes()
+	public function testSinglePinInEachFrame()
 	{
 	
 		foreach (range(1, 10) as $roll) {
