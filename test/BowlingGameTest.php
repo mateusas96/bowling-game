@@ -37,11 +37,12 @@ class BowlingGameTest extends TestCase
 	public function testAllOnes()
 	{
 	
-		foreach (range(1, 20) as $roll) {
+		foreach (range(1, 10) as $roll) {
 			$this->game->roll(1);
+			$this->game->roll(0);
 		}
 		
-		$this->assertEquals(20, $this->game->score());
+		$this->assertEquals(10, $this->game->score());
 	}
 
 	// test all spare but last frame is all strikes
