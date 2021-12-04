@@ -12,7 +12,7 @@ class BowlingGameTest extends TestCase
 		$this->game = new Game();
 	}
 
-	// all pins are missed 
+	// test all pins are missed 
 	public function testGutterGame()
 	{
 		foreach (range(1, 20) as $roll) {
@@ -22,7 +22,7 @@ class BowlingGameTest extends TestCase
 		$this->assertEquals(0, $this->game->score());
 	}
 
-	// strike in all frames
+	// test strike in all frames
 	public function testPerfectGame()
 	{
 	
@@ -33,7 +33,7 @@ class BowlingGameTest extends TestCase
 		$this->assertEquals(300, $this->game->score());
 	}
 
-	// single pin is hit in each frame
+	// test single pin is hit in each frame
 	public function testAllOnes()
 	{
 	
@@ -122,8 +122,7 @@ class BowlingGameTest extends TestCase
 		$this->assertEquals(9999, $this->game->score());
 	}
 
-	// test all frames are spares
-	public function testAllSpares()
+	public function testAllSpareButLastFrameIsSparePlusFivePins()
 	{
 		foreach (range(1, 21) as $roll) {
 			$this->game->roll(5);
